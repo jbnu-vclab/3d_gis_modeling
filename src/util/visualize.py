@@ -18,7 +18,7 @@ def visualize_projected_points(points, polygon_point_counts, limit):
     plt.axis('scaled')
     plt.show()
 
-def visualize_latlon_points(points, polygon_point_counts, limit):
+def visualize_latlon_points(filename, points, polygon_point_counts, limit):
     import folium
     import webbrowser
 
@@ -33,7 +33,7 @@ def visualize_latlon_points(points, polygon_point_counts, limit):
         folium.Polygon(locations=points[start:end, :].tolist()).add_to(m)
         start = end
 
-    html_path = 'latlon_viz.html'
+    html_path = f'{filename}.html'
     m.save(html_path)
     webbrowser.open(html_path, new=2)
 
